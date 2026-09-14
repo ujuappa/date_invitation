@@ -1,0 +1,4 @@
+.DS_Store
+.claude/
+# source images kept locally only — the site ships the processed versions
+image/_originals/

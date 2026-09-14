@@ -1,0 +1,239 @@
+/* Organic design tokens + component classes (from the Claude Design handoff's
+   design system), plus page-specific layout/animation rules for the date-ask page. */
+@import url('https://fonts.googleapis.com/css2?family=Caprasimo&family=Figtree:wght@400;500;600;700&family=Caveat:wght@500;600&display=swap');
+
+:root {
+  --color-bg: #f5ead8;
+  --color-surface: #ebddc5;
+  --color-text: #201e1d;
+  --color-accent: #c67139;
+  --color-accent-2: #7a8a5e;
+  --color-divider: color-mix(in srgb, #201e1d 16%, transparent);
+
+  --color-neutral-100: #f9f4ed;
+  --color-neutral-200: #eee7db;
+  --color-neutral-300: #dcd3c4;
+  --color-neutral-400: #c0b6a5;
+  --color-neutral-500: #a19786;
+  --color-neutral-600: #82796a;
+  --color-neutral-700: #645c50;
+  --color-neutral-800: #474238;
+  --color-neutral-900: #2e2b25;
+
+  --color-accent-100: #fff2eb;
+  --color-accent-200: #ffe1d0;
+  --color-accent-300: #ffc6a5;
+  --color-accent-400: #f6a06b;
+  --color-accent-500: #d67f48;
+  --color-accent-600: #b2622d;
+  --color-accent-700: #8c491a;
+  --color-accent-800: #643312;
+  --color-accent-900: #402310;
+
+  --color-accent-2-100: #f0fae1;
+  --color-accent-2-200: #e1eecc;
+  --color-accent-2-300: #ccdbb2;
+  --color-accent-2-400: #aebf92;
+  --color-accent-2-500: #8fa073;
+  --color-accent-2-600: #728157;
+  --color-accent-2-700: #56633f;
+  --color-accent-2-800: #3d472b;
+  --color-accent-2-900: #272e1b;
+
+  --font-heading: "Caprasimo", system-ui, sans-serif;
+  --font-heading-weight: 400;
+  --font-body: "Figtree", system-ui, sans-serif;
+
+  --space-1: 4.4px;
+  --space-2: 8.8px;
+  --space-3: 13.2px;
+  --space-4: 17.6px;
+  --space-6: 26.4px;
+  --space-8: 35.2px;
+
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 28px;
+
+  --shadow-sm: 0 1px 2px color-mix(in srgb, #2e2b25 14%, transparent);
+  --shadow-md: 0 3px 10px color-mix(in srgb, #2e2b25 16%, transparent);
+  --shadow-lg: 0 12px 32px color-mix(in srgb, #2e2b25 22%, transparent);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; background: var(--color-bg); -webkit-tap-highlight-color: transparent; }
+body { color: var(--color-text); font-family: var(--font-body); font-size: 15px; line-height: 1.55; font-weight: 400; }
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  line-height: 1.12; letter-spacing: -0.015em; margin: 0 0 var(--space-2);
+}
+p { margin: 0 0 var(--space-3); }
+a { color: var(--color-accent-700); text-underline-offset: 3px; }
+a:hover { color: var(--color-accent-600); }
+:focus { outline: none; }
+:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+::selection { background: color-mix(in srgb, var(--color-accent) 30%, transparent); }
+
+.text-muted { color: color-mix(in srgb, var(--color-text) 55%, transparent); }
+
+/* — buttons — */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  cursor: pointer; text-decoration: none;
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  font-size: 14px; line-height: 1.2; color: var(--color-text);
+  background: transparent; border: 1px solid transparent;
+  padding: var(--space-2) calc(var(--space-3) * 1.2);
+  border-radius: 999px;
+}
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.btn-primary { background: var(--color-accent); color: var(--color-bg); }
+.btn-primary:hover { background: var(--color-accent-600); }
+.btn-primary:active { background: var(--color-accent-700); }
+.btn-secondary { border-color: var(--color-divider); }
+.btn-secondary:hover { background: color-mix(in srgb, var(--color-text) 7%, transparent); }
+.btn-secondary:active { background: color-mix(in srgb, var(--color-text) 14%, transparent); }
+.btn-ghost { color: var(--color-accent); padding-inline: var(--space-1); }
+.btn-ghost:hover { background: color-mix(in srgb, var(--color-accent) 10%, transparent); }
+.btn-ghost:active { background: color-mix(in srgb, var(--color-accent) 18%, transparent); }
+
+/* — cards — */
+.card {
+  display: flex; flex-direction: column; gap: var(--space-2);
+  padding: var(--space-3); border-radius: calc(var(--radius-lg) * 1.15); background: var(--color-surface);
+}
+.elev-md { box-shadow: var(--shadow-md); }
+
+/* — tags — */
+.tag {
+  display: inline-flex; align-items: center; font-size: 11px;
+  letter-spacing: 0.02em; padding: 3px 10px; border-radius: 999px;
+}
+.tag-accent { background: var(--color-accent-100); color: var(--color-accent-800); }
+.tag-accent-2 { background: var(--color-accent-2-100); color: var(--color-accent-2-800); }
+
+/* — page layout — */
+.page {
+  min-height: 100vh; background: var(--color-bg); color: var(--color-text);
+  font-family: var(--font-body); position: relative; overflow: hidden;
+  display: flex; flex-direction: column; align-items: center;
+  padding: 26px 20px 22px;
+}
+.bg-circle-a {
+  position: absolute; top: -120px; right: -110px; width: 300px; height: 300px;
+  border-radius: 50%; background: var(--color-accent-200); pointer-events: none;
+}
+.bg-circle-b {
+  position: absolute; bottom: -150px; left: -120px; width: 330px; height: 330px;
+  border-radius: 50%; background: var(--color-accent-2-200); pointer-events: none;
+}
+.hearts-layer { position: fixed; inset: 0; pointer-events: none; z-index: 40; }
+.heart {
+  position: absolute; top: 0; color: var(--color-accent-500); animation: fall linear infinite;
+}
+.stage {
+  width: 100%; max-width: 430px; position: relative; z-index: 2; flex: 1;
+  display: flex; flex-direction: column; justify-content: center; gap: 20px;
+}
+.slide { display: flex; flex-direction: column; gap: 16px; animation: pop .45s ease both; }
+.slide-loose { gap: 18px; align-items: flex-start; }
+
+.card-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.choice-card {
+  text-align: left; cursor: pointer; font-family: var(--font-body); color: var(--color-text);
+  border-radius: var(--radius-lg); padding: 11px; display: flex; flex-direction: column;
+  gap: 5px; min-height: 88px; border: 2px solid; background: none;
+}
+.card-wide { grid-column: 1 / -1; cursor: default; min-height: 0; }
+.custom-input {
+  font-family: var(--font-body); font-size: 15px; color: var(--color-text);
+  background: transparent; border: none; border-bottom: 2px solid var(--color-divider);
+  padding: 6px 2px; min-height: 40px; width: 100%;
+}
+.custom-input::placeholder { color: var(--color-neutral-500); }
+.custom-input:focus { border-bottom-color: var(--color-accent-500); outline: none; }
+.choice-icon {
+  width: 33px; height: 33px; border-radius: 50%; display: flex;
+  align-items: center; justify-content: center; flex: none;
+}
+.choice-icon svg { width: 19px; height: 19px; }
+.choice-icon.blob { border-radius: 50% 50% 50% 10px; }
+.choice-title { font-family: var(--font-heading); font-size: 17px; line-height: 1.1; }
+.choice-sub { font-size: 12px; color: var(--color-neutral-700); }
+
+.script-note { font-family: 'Caveat', cursive; color: var(--color-accent-700); }
+
+/* — drawings — */
+.art-intro { position: relative; width: 100%; height: 362px; }
+.art-intro .blob {
+  position: absolute; animation: bob 5.5s ease-in-out infinite; pointer-events: none;
+}
+.art-intro .blob-1 {
+  left: 50%; top: 42px; width: 252px; height: 252px; margin-left: -134px;
+  border-radius: 50%; background: var(--color-accent-200);
+}
+.art-intro .blob-2 {
+  left: 50%; top: 0; width: 94px; height: 94px; margin-left: 58px;
+  border-radius: 50%; background: var(--color-accent-2-300);
+}
+.art-intro .blob-3 {
+  left: 50%; top: 46px; width: 46px; height: 46px; margin-left: -160px;
+  border-radius: 50% 50% 50% 10px; background: var(--color-accent-2-500);
+}
+/* bob-center keeps the X centering inside the keyframes — a plain translateY
+   animation would overwrite a separate transform and shove the art off-screen. */
+.art-intro .art-ink {
+  position: absolute; left: 50%; top: 2px; height: 322px; width: auto;
+  animation: bob-center 5.5s ease-in-out infinite;
+}
+.art-intro .script-note {
+  position: absolute; left: 2px; bottom: 4px; font-size: 23px; transform: rotate(-7deg);
+}
+
+/* height:auto shows the whole frame — object-fit only matters where a
+   short-screen media query forces a fixed height below. */
+.art-event {
+  width: 100%; height: auto; object-fit: cover; object-position: 50% 28%;
+  border-radius: calc(var(--radius-lg) * 1.15); display: block;
+}
+.art-sunday { display: block; height: 186px; width: auto; margin: -6px auto -2px; }
+.art-recap { display: block; height: 300px; width: auto; margin: -20px auto -16px; }
+/* the artwork gives way first on shorter phones, so the copy still fits */
+@media (max-height: 740px) {
+  .art-intro { height: 202px; }
+  .art-intro .art-ink { height: 184px; }
+  .art-intro .blob-1 { width: 168px; height: 168px; margin-left: -92px; top: 22px; }
+  .art-intro .blob-2 { width: 66px; height: 66px; margin-left: 40px; }
+  .art-intro .blob-3 { width: 38px; height: 38px; margin-left: -128px; top: 32px; }
+  .art-event { height: 116px; }
+  .art-sunday { height: 104px; margin: -4px auto -2px; }
+  .art-recap { height: 144px; margin: -10px auto -8px; }
+}
+
+.nav-bar {
+  width: 100%; max-width: 430px; position: relative; z-index: 2;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; margin-top: 24px;
+}
+.nav-bar .btn-ghost { border-radius: 999px; min-height: 44px; padding: 12px 16px; font-size: 15px; }
+.nav-bar .btn-primary { border-radius: 999px; min-height: 44px; padding: 12px 24px; font-size: 15px; }
+.dots { display: flex; gap: 8px; align-items: center; }
+.dot { width: 9px; height: 9px; border-radius: 50%; display: block; transition: background .2s ease; }
+
+.recap-card { border-radius: var(--radius-lg); padding: 16px; display: flex; flex-direction: column; gap: 11px; }
+.recap-row { display: flex; flex-direction: column; gap: 2px; }
+.recap-key {
+  font-size: 12px; letter-spacing: .09em; text-transform: uppercase;
+  color: var(--color-accent-700); font-weight: 600;
+}
+.recap-val { font-family: var(--font-heading); font-size: 20px; line-height: 1.14; }
+.recap-foot {
+  display: flex; align-items: center; gap: 9px;
+  border-top: 1px solid var(--color-divider); padding-top: 10px;
+}
+
+@keyframes wobble { 0%,100% { transform: rotate(-2.5deg) } 50% { transform: rotate(2.5deg) } }
+@keyframes bob { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-10px) } }
+@keyframes bob-center { 0%,100% { transform: translate(-50%, 0) } 50% { transform: translate(-50%, -10px) } }
+@keyframes fall { 0% { transform: translateY(-14vh) rotate(0deg); opacity: 0 } 12% { opacity: 1 } 100% { transform: translateY(112vh) rotate(240deg); opacity: 0 } }
+@keyframes pop { 0% { transform: scale(.96) translateY(8px); opacity: 0 } 100% { transform: scale(1) translateY(0); opacity: 1 } }
