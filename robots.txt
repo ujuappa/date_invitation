@@ -1,0 +1,6 @@
+# Not meant to be found — this is a private invitation.
+# Note: on a GitHub project page this file lives at /date_invitation/robots.txt,
+# which crawlers do not treat as authoritative. The <meta name="robots">
+# tag in index.html is what actually prevents indexing.
+User-agent: *
+Disallow: /
